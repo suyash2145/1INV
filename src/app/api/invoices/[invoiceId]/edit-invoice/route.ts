@@ -3,9 +3,9 @@ import { NextResponse, NextRequest } from "next/server";
 import { database, Invoices11, Customers } from "@/database";
 import { eq } from "drizzle-orm";
 
-export async function PUT(req: NextRequest, context: { params: { invoiceId: string } }) {
+export async function PUT(req: NextRequest, { params }: { params: { invoiceId: string } }) {
     try {
-        const { invoiceId } = context.params; // ✅ Correctly accessing params
+        const { invoiceId } = params; // ✅ Correctly accessing params
 
         if (!invoiceId) {
             return NextResponse.json({ error: "Invoice ID is required" }, { status: 400 });
